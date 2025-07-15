@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_ecommerce/home/main_food_page.dart';
+import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
+
 import 'package:get/get.dart';
 
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       
-      home: MainFoodPage()
+      //home: MainFoodPage(),
+      home: PopularFoodDetail(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
+import 'package:food_delivery_ecommerce/widgets/app_column.dart';
 import 'package:food_delivery_ecommerce/widgets/big_text.dart';
 import 'package:food_delivery_ecommerce/widgets/icon_and_text.dart';
 import 'package:food_delivery_ecommerce/widgets/small_text.dart';
@@ -39,7 +40,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    //print(MediaQuery.of(context).size.height.toString());
+    //print(MediaQuery.of(context).size.height.toString()); phone height
+    //print(MediaQuery.of(context).size.width.toString()); phone width
     return Column(
       children: [
         //slider section
@@ -97,33 +99,85 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         //list of food and images
-        Container(
-          height: 900,
-          child: ListView.builder(
+        ListView.builder(
             shrinkWrap: true,
-            physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(
-                      left: Dimension.width20, right: Dimension.width20),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 120,
-                        height: 120,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimension.width20,
+                    right: Dimension.width20,
+                    bottom: Dimension.height10),
+                child: Row(
+                  children: [
+                    //image section
+                    Container(
+                      width: Dimension.listViewImgSize,
+                      height: Dimension.listViewImgSize,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimension.radius20),
+                          color: Colors.white38,
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/image/food0.png"))),
+                    ),
+                    //text container
+                    Expanded(
+                      child: Container(
+                        height: Dimension.listViewTextContSize,
+                        // width: 200,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimension.radius20),
-                            color: Colors.white38,
-                            image: const DecorationImage(
-                                image: AssetImage("assets/image/food0.png"))),
-                      )
-                    ],
-                  ),
-                );
-              }),
-        ),
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimension.radius20),
+                                bottomRight:
+                                    Radius.circular(Dimension.radius20)),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Dimension.width10,
+                              right: Dimension.width10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "Nutritious fruit meal in china"),
+                              SizedBox(
+                                width: Dimension.height10,
+                              ),
+                              SmallText(text: "With chinese characteristics"),
+                              SizedBox(
+                                width: Dimension.height10,
+                              ),
+                              const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconAndText(
+                                    icon: Icons.circle_sharp,
+                                    text: ".",
+                                    iconColor: AppColors.iconColor1,
+                                  ),
+                                  IconAndText(
+                                      icon: Icons.location_on,
+                                      text: "1.7km",
+                                      iconColor: AppColors.mainColor),
+                                  IconAndText(
+                                      icon: Icons.access_time_rounded,
+                                      text: "32min",
+                                      iconColor: AppColors.iconColor2)
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }),
       ],
     );
   }
@@ -191,64 +245,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             child: Container(
               padding:
                   EdgeInsets.only(top: Dimension.height15, left: 15, right: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BigText(text: "Chinese Side"),
-                  SizedBox(
-                    height: Dimension.height10,
-                  ),
-                  Row(
-                    children: [
-                      Wrap(
-                        children: List.generate(
-                          5,
-                          (index) {
-                            return const Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: 15,
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SmallText(text: "4.5"),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SmallText(text: "1287"),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SmallText(text: "Comments")
-                    ],
-                  ),
-                  SizedBox(
-                    height: Dimension.height20,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconAndText(
-                          icon: Icons.circle_sharp,
-                          text: "Normal",
-                          iconColor: AppColors.iconColor1),
-                      IconAndText(
-                          icon: Icons.location_on,
-                          text: "1.7km",
-                          iconColor: AppColors.mainColor),
-                      IconAndText(
-                          icon: Icons.access_time_rounded,
-                          text: "32min",
-                          iconColor: AppColors.iconColor2)
-                    ],
-                  )
-                ],
-              ),
-            ),
+              child: const AppColumn(text: "Chinese Side",)),
           ),
         ),
       ]),
