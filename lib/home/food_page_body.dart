@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
+import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/big_text.dart';
 import 'package:food_delivery_ecommerce/widgets/icon_and_text.dart';
 import 'package:food_delivery_ecommerce/widgets/small_text.dart';
@@ -17,7 +18,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   var currPageValue = 0.0;
   double scaleFactor = 0.8;
-  double height = 220;
+  double height = Dimension.pageViewContainer;
 
   @override
   void initState() {
@@ -38,11 +39,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
+    //print(MediaQuery.of(context).size.height.toString());
     return Column(
       children: [
+        //slider section
         Container(
           //color: Colors.deepOrange,
-          height: 320,
+          height: Dimension.pageView,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
@@ -51,7 +54,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             },
           ),
         ),
-        new DotsIndicator(
+        //dots indicator section
+        DotsIndicator(
           dotsCount: 5,
           position: currPageValue,
           decorator: DotsDecorator(
@@ -61,7 +65,65 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
           ),
-        )
+        ),
+        //populart header
+        SizedBox(
+          height: Dimension.height30,
+        ),
+        Container(
+          margin: EdgeInsets.only(left: Dimension.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(
+                width: Dimension.width10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(
+                width: Dimension.width10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Food pairing"),
+              )
+            ],
+          ),
+        ),
+        //list of food and images
+        Container(
+          height: 900,
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                      left: Dimension.width20, right: Dimension.width20),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimension.radius20),
+                            color: Colors.white38,
+                            image: const DecorationImage(
+                                image: AssetImage("assets/image/food0.png"))),
+                      )
+                    ],
+                  ),
+                );
+              }),
+        ),
       ],
     );
   }
@@ -95,10 +157,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(children: [
         Container(
-          height: 220,
-          margin: const EdgeInsets.only(left: 10, right: 10),
+          height: Dimension.pageViewContainer,
+          margin: EdgeInsets.only(
+              left: Dimension.width10, right: Dimension.width10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimension.radius30),
               color: index.isEven
                   ? const Color(0xFF69c5df)
                   : const Color(0xFF9294cc),
@@ -109,10 +172,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 120,
-            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 40),
+            height: Dimension.pageViewTextContainer,
+            margin: EdgeInsets.only(
+                left: Dimension.width25,
+                right: Dimension.width25,
+                bottom: Dimension.height40),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Dimension.radius20),
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -123,13 +189,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   BoxShadow(color: Colors.white, offset: Offset(5, 0))
                 ]),
             child: Container(
-              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+              padding:
+                  EdgeInsets.only(top: Dimension.height15, left: 15, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BigText(text: "Chinese Side"),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: Dimension.height10,
                   ),
                   Row(
                     children: [
@@ -159,8 +226,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       SmallText(text: "Comments")
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: Dimension.height20,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
