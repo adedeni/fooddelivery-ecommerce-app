@@ -13,7 +13,7 @@ class IconAndText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: iconColor, size: Dimension.iconSize24,),
+        Icon(icon, color: iconColor, size: Dimension.iconSize20,),
         const SizedBox(width: 5,),
         SmallText(text: text)
       ],

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 
 class BigText extends StatelessWidget {
-   Color? color;
+   
   final String text;
+  Color? color;
   double size;
   TextOverflow overflow;
   BigText({

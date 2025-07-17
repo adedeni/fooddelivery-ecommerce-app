@@ -32,6 +32,7 @@ class Dimension {
 
   //icons size
   static double iconSize24 = screenHeight / 34.17;
+  static double iconSize20 = screenHeight / 41;
   static double iconSize16 = screenHeight / 51.25;
   //list view size
   // 360/120 = screenWidth/pageviewcontainercard height;
@@ -41,6 +42,6 @@ class Dimension {
   //popular food page
   static double popularFoodImgSize = screenHeight / 2.34;
 
-  //bottom heigh
+  //bottom height
   static double bottomHeightBar = screenHeight / 6.83;
 }
