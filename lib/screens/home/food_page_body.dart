@@ -1,10 +1,11 @@
+// ignore_for_file: sized_box_for_whitespace, must_call_super
+
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/models/popular_products_model.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
-import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
 import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';

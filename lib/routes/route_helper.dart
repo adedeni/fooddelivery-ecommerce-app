@@ -1,4 +1,6 @@
 //import 'package:flutter/foundation.dart';
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
 import 'package:food_delivery_ecommerce/screens/food/recommended_food_detail.dart';
 import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
@@ -19,12 +21,14 @@ class RouteHelper {
       },
       transition: Transition.fadeIn
       ),
+      
     GetPage(name: popularFood, page: () {
      // print("this work");
       return const PopularFoodDetail();
     },
     transition: Transition.fadeIn
     ),
+
     GetPage(name: recommendedFood, page: () {
      // print("this work");
       return const RecommendedFoodDetail();

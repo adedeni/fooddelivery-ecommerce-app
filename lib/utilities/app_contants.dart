@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class AppContants {
   static const String APP_NAME = "ChopUp";
   static const int APP_VERSION = 1;

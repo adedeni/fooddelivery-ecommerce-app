@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, unnecessary_this
+
 class Products {
   int? _totalSize;
   int? _typeId;
@@ -10,6 +12,7 @@ class Products {
       required typeId,
       required offset,
       required products}) {
+  
     this._totalSize = totalSize;
     this._typeId = typeId;
     this._offset = offset;

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/screens/home/food_page_body.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
