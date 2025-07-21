@@ -3,8 +3,8 @@ import 'package:food_delivery_ecommerce/controllers/popular_products_controller.
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
 //import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
-import 'package:food_delivery_ecommerce/screens/food/recommended_food_detail.dart';
-import 'package:food_delivery_ecommerce/screens/home/food_page_body.dart';
+//import 'package:food_delivery_ecommerce/screens/food/recommended_food_detail.dart';
+//import 'package:food_delivery_ecommerce/screens/home/food_page_body.dart';
 import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
 
 import 'package:get/get.dart';
