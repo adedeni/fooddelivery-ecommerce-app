@@ -6,7 +6,7 @@ import 'package:food_delivery_ecommerce/controllers/popular_products_controller.
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/models/popular_products_model.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
-import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
+//import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/app_column.dart';
@@ -58,18 +58,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ? Container(
                   //color: Colors.deepOrange,
                   height: Dimension.pageView,
-                  child: GestureDetector(
-                    onTap: () => {
-                      Get.toNamed(RouteHelper.getPopularFood())
+
+                  child: PageView.builder(
+                    controller: pageController,
+                    itemCount: popularProducts.popularProductsList.length,
+                    itemBuilder: (context, position) {
+                      return buildPageItem(position,
+                          popularProducts.popularProductsList[position]);
                     },
-                    child: PageView.builder(
-                      controller: pageController,
-                      itemCount: popularProducts.popularProductsList.length,
-                      itemBuilder: (context, position) {
-                        return buildPageItem(position,
-                            popularProducts.popularProductsList[position]);
-                      },
-                    ),
                   ),
                 )
               : const CircularProgressIndicator(
@@ -121,6 +117,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ],
           ),
         ),
+        //RECOMMENDED FOOD
         //list of food and images
         GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
           return recommendedProduct.isLoaded
@@ -131,7 +128,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood());
+                        Get.toNamed(RouteHelper.getRecommendedFood(index));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -148,10 +145,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   borderRadius:
                                       BorderRadius.circular(Dimension.radius20),
                                   color: Colors.white38,
-                                  image:  DecorationImage(
+                                  image: DecorationImage(
                                       fit: BoxFit.cover,
-                                      image:
-                                          NetworkImage(AppContants.BASE_URL+AppContants.UPLOAD_URI+recommendedProduct.recommendedProductsList[index].img!))),
+                                      image: NetworkImage(recommendedProduct
+                                          .recommendedProductsList[index]
+                                          .img!))),
                             ),
                             //text container
                             Expanded(
@@ -162,19 +160,22 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                     borderRadius: BorderRadius.only(
                                         topRight:
                                             Radius.circular(Dimension.radius20),
-                                        bottomRight:
-                                            Radius.circular(Dimension.radius20)),
+                                        bottomRight: Radius.circular(
+                                            Dimension.radius20)),
                                     color: Colors.white),
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                       left: Dimension.width10,
                                       right: Dimension.width10),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       BigText(
-                                          text: recommendedProduct.recommendedProductsList[index].name!),
+                                          text: recommendedProduct
+                                              .recommendedProductsList[index]
+                                              .name!),
                                       SizedBox(
                                         width: Dimension.height10,
                                       ),
@@ -212,7 +213,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       ),
                     );
                   })
-              :const CircularProgressIndicator(color: AppColors.mainColor);
+              : const CircularProgressIndicator(color: AppColors.mainColor);
         })
       ],
     );
@@ -246,20 +247,24 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Transform(
       transform: matrix,
       child: Stack(children: [
-        Container(
-          height: Dimension.pageViewContainer,
-          margin: EdgeInsets.only(
-              left: Dimension.width10, right: Dimension.width10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimension.radius30),
-              color: index.isEven
-                  ? const Color(0xFF69c5df)
-                  : const Color(0xFF9294cc),
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(AppContants.BASE_URL +
-                      AppContants.UPLOAD_URI +
-                      popularProduct.img!))),
+        GestureDetector(
+          onTap: () {
+            
+            Get.toNamed(RouteHelper.getPopularFood(index));
+          },
+          child: Container(
+            height: Dimension.pageViewContainer,
+            margin: EdgeInsets.only(
+                left: Dimension.width10, right: Dimension.width10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimension.radius30),
+                color: index.isEven
+                    ? const Color(0xFF69c5df)
+                    : const Color(0xFF9294cc),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(popularProduct.img!))),
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,

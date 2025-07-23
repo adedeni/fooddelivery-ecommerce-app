@@ -10,10 +10,11 @@ class PopularProductController extends GetxController {
   List<dynamic> get popularProductsList => _popularProductsList;
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
+  int _quantity = 0;
+
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepository.getPopularProductList();
     if (response.statusCode == 200) {
-      
       //print("i am here");
       _popularProductsList = [];
       _popularProductsList.addAll(Products.fromJson(response.body).products);
@@ -21,5 +22,13 @@ class PopularProductController extends GetxController {
       _isLoaded = true;
       update();
     } else {}
+  }
+
+  void setQuantity(bool isIncrement) {
+    if (isIncrement == true) {
+      _quantity = _quantity + 1;
+    } else {
+      _quantity = _quantity - 1;
+    }
   }
 }

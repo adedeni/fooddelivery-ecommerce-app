@@ -4,9 +4,9 @@ class AppContants {
   static const String APP_NAME = "ChopUp";
   static const int APP_VERSION = 1;
 
-  static const String BASE_URL = "https://mvs.bslmeiyu.com";
-  static const String POPULAR_PRODUCT_URI = "/api/v1/products/popular";
-  static const String RECOMMENDED_PRODUCT_URI = "/api/v1/products/recommended";
-  static const String UPLOAD_URI = "/uploads/";
+  static const String BASE_URL = "https://api.npoint.io";
+  static const String POPULAR_PRODUCT_URI = "/7888d1d35ece17683079";
+  static const String RECOMMENDED_PRODUCT_URI = "/12daca288bca16ab6c35";
+ 
   static const String TOKEN = "servertoken0158";
 }
