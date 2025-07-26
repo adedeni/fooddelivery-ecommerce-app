@@ -1,5 +1,5 @@
 import 'package:food_delivery_ecommerce/data/repository/recommended_product_repository.dart';
-import 'package:food_delivery_ecommerce/models/popular_products_model.dart';
+import 'package:food_delivery_ecommerce/models/products_model.dart';
 import 'package:get/get.dart';
 
 class RecommendedProductController extends GetxController {
