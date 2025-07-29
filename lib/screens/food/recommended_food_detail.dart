@@ -3,6 +3,7 @@ import 'package:food_delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
+//import 'package:food_delivery_ecommerce/screens/cart/cart_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/app_icon.dart';
@@ -36,7 +37,48 @@ class RecommendedFoodDetail extends StatelessWidget {
                       Get.toNamed(RouteHelper.getInitial());
                     },
                     child: const AppIcon(icon: Icons.clear)),
-                const AppIcon(icon: Icons.shopping_cart_outlined)
+                //const AppIcon(icon: Icons.shopping_cart_outlined)
+                 GetBuilder<PopularProductController>(builder: (carticon) {
+                    return GestureDetector(
+                      onTap: () {
+                                   if(carticon.totalItems >= 1) {
+                                      Get.toNamed(RouteHelper.getCartPage());
+                                    }
+                                },
+                                
+                      child: Stack(
+                        children: [
+                          const AppIcon(
+                              icon: Icons.shopping_cart_checkout_outlined),
+                          Get.find<PopularProductController>().totalItems >= 1
+                              ? const Positioned(
+                                right: 0,
+                                top: 0,
+                                
+                                  
+                                  child:  AppIcon(
+                                      icon: Icons.circle, size: 20, iconColor: Colors.transparent, backgroundColor: AppColors.mainColor,),
+                                
+                              )
+                              : Container(),
+                              Get.find<PopularProductController>().totalItems >= 1
+                              ? Positioned(
+                                
+                                right: 4.5,
+                                top: 1,
+                                child: BigText(
+                                  
+                                  text:  Get.find<PopularProductController>().totalItems.toString(),
+                                size: 12, color: Colors.white,
+                                ),
+                                
+                              )
+                              : Container()
+                        ],
+                      ),
+                    );
+                  })
+                
               ],
             ),
             bottom: PreferredSize(

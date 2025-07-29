@@ -27,41 +27,41 @@ class CartController extends GetxController {
             img: value.img,
             quantity: value.quantity! + quantity,
             isExist: true,
-            time: DateTime.now().toString());
+            time: DateTime.now().toString(),
+            product: product);
       });
 
-      if (totalQuantity<=0){
+      if (totalQuantity <= 0) {
         _items.remove(product.id);
       }
     } else {
-      if(quantity > 0){
+      if (quantity > 0) {
         //print('length of the items is ' + _items.length.toString());
-      _items.putIfAbsent(product.id!, () {
-        // print('adding item to the cart id' +
-        //     product.id!.toString() +
-        //     '  ' +
-        //     'quantity' +
-        //     quantity.toString());
-        // _items.forEach((key, value){
-        // print('quantity in cart is ' + value.quantity.toString());
-        // });
-        return CartModel(
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            img: product.img,
-            quantity: quantity,
-            isExist: true,
-            time: DateTime.now().toString());
-      });
+        _items.putIfAbsent(product.id!, () {
+          // print('adding item to the cart id' +
+          //     product.id!.toString() +
+          //     '  ' +
+          //     'quantity' +
+          //     quantity.toString());
+          // _items.forEach((key, value){
+          // print('quantity in cart is ' + value.quantity.toString());
+          // });
+          return CartModel(
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              img: product.img,
+              quantity: quantity,
+              isExist: true,
+              time: DateTime.now().toString(),
+              product: product);
+        });
       } else {
-        Get.snackbar(
-          'Items count', 'Add at least one itme',
-          backgroundColor: AppColors.mainColor,
-          colorText: Colors.white
-        );
+        Get.snackbar('Items count', 'Add at least one itme',
+            backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
+    update();
   }
 
   bool existInCart(ProductModel product) {
@@ -86,10 +86,16 @@ class CartController extends GetxController {
   }
 
   int get totalItems {
-    var totalQuantity =0;
+    var totalQuantity = 0;
     _items.forEach((key, value) {
       totalQuantity += value.quantity!;
     });
     return totalQuantity;
+  }
+
+  List<CartModel> get getItems {
+    return _items.entries.map((e) {
+      return e.value;
+    }).toList();
   }
 }
