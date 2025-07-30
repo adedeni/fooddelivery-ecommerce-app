@@ -3,7 +3,7 @@ import 'package:food_delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
 //import 'package:food_delivery_ecommerce/screens/cart/cart_page.dart';
-import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
+//import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
 //import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 
@@ -16,10 +16,9 @@ import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
-  const PopularFoodDetail({
-    super.key,
-    required this.pageId,
-  });
+  final String page;
+  const PopularFoodDetail(
+      {super.key, required this.pageId, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +53,20 @@ class PopularFoodDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                      onTap: () => {Get.to(() => const MainFoodPage())},
+                      onTap: () => {
+                            if (page == "cartpage")
+                              {Get.toNamed(RouteHelper.getCartPage())}
+                            else
+                              {Get.toNamed(RouteHelper.getInitial())}
+                          },
                       child: const AppIcon(icon: Icons.arrow_back_ios)),
                   GetBuilder<PopularProductController>(builder: (carticon) {
                     return GestureDetector(
                       onTap: () {
-                                    if(carticon.totalItems >= 1) {
-                                      Get.toNamed(RouteHelper.getCartPage());
-                                    }
-                                },
+                        if (carticon.totalItems >= 1) {
+                          Get.toNamed(RouteHelper.getCartPage());
+                        }
+                      },
                       child: Stack(
                         children: [
                           const AppIcon(
@@ -71,7 +75,7 @@ class PopularFoodDetail extends StatelessWidget {
                               ? const Positioned(
                                   right: 0,
                                   top: 0,
-                                  child:  AppIcon(
+                                  child: AppIcon(
                                     icon: Icons.circle,
                                     size: 20,
                                     iconColor: Colors.transparent,

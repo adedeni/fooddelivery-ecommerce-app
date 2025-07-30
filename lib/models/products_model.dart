@@ -5,18 +5,17 @@ class Products {
   int? _typeId;
   int? _offset;
   late List<ProductModel> _products;
-  List<ProductModel> get products=>_products;
+  List<ProductModel> get products => _products;
 
   Products(
       {required totalSize,
       required typeId,
       required offset,
       required products}) {
-  
     this._totalSize = totalSize;
     this._typeId = typeId;
     this._offset = offset;
-    this._products = products; 
+    this._products = products;
   }
 
   Products.fromJson(Map<String, dynamic> json) {
@@ -67,5 +66,18 @@ class ProductModel {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     typeId = json['type_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "price": price,
+      "img": img,
+      "location": location,
+      "createdAt": createdAt,
+      "updatedAt": updatedAt,
+      "typeId": typeId
+    };
   }
 }

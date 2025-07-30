@@ -7,20 +7,39 @@ import 'package:food_delivery_ecommerce/data/repository/popular_product_reposito
 import 'package:food_delivery_ecommerce/data/repository/recommended_product_repository.dart';
 import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:get/get_core/src/get_main.dart';
 
 Future<void> init() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  //shared preferences
+  Get.lazyPut(() {
+    return sharedPreferences;
+  });
   //api client
-  Get.lazyPut(() => ApiClient(appBaseUrl: AppContants.BASE_URL));
+  Get.lazyPut(() {
+    return ApiClient(appBaseUrl: AppContants.BASE_URL);
+  });
 
   //repository
-  Get.lazyPut(() => PopularProductRepository(apiClient: Get.find()));
-  Get.lazyPut(() => RecommendedProductRepository(apiClient: Get.find()));
-  Get.lazyPut(() => CartRepository());
+  Get.lazyPut(() {
+    return PopularProductRepository(apiClient: Get.find());
+  });
+  Get.lazyPut(() {
+    return RecommendedProductRepository(apiClient: Get.find());
+  });
+  Get.lazyPut(() {
+    return CartRepository(sharedPreferences: Get.find());
+  });
 
   //controllers
-  Get.lazyPut(() => PopularProductController(popularProductRepository: Get.find()));
-  Get.lazyPut(() => RecommendedProductController(recommendedProductRepository: Get.find()));
+  Get.lazyPut(() {
+    return PopularProductController(popularProductRepository: Get.find());
+  });
+  Get.lazyPut(() {
+    return RecommendedProductController(
+        recommendedProductRepository: Get.find());
+  });
   Get.lazyPut(() => CartController(cartRepository: Get.find()));
-
 }
