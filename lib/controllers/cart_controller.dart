@@ -10,7 +10,7 @@ class CartController extends GetxController {
 
   CartController({required this.cartRepository});
 
-  final Map<int, CartModel> _items = {};
+   Map<int, CartModel> _items = {};
 
   Map<int, CartModel> get items => _items;
 //this is for storage and shared preferences
@@ -121,11 +121,35 @@ class CartController extends GetxController {
 
   set setCart(List<CartModel> items) {
     storageItems = items;
-  //  print("length of cart items " +storageItems.length.toString());
+    //  print("length of cart items " +storageItems.length.toString());
     for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].product!.id!, () {
         return storageItems[i];
       });
     }
+  }
+
+  void addToHistory (){
+    cartRepository.addToCartHistoryList();
+    clear();
+  }
+
+  void clear(){
+    _items = {};
+
+    update();
+  }
+  List<CartModel> getCartHistoryList(){
+    return cartRepository.getCartHistoryList();
+  }
+
+  set setItems(Map<int, CartModel> setItems){
+    _items = {};
+    _items = setItems;
+  }
+
+  void addToCartList(){
+    cartRepository.addToCartList(getItems);
+    update();
   }
 }
