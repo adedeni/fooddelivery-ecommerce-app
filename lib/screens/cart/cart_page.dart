@@ -58,7 +58,7 @@ class CartPage extends StatelessWidget {
                   ],
                 )),
             GetBuilder<CartController>(builder: (_cartController) {
-              return _cartController.getItems.length > 0
+              return _cartController.getItems.isNotEmpty
                   ? Positioned(
                       top: Dimension.height20 * 5,
                       left: Dimension.width20,
@@ -248,7 +248,7 @@ class CartPage extends StatelessWidget {
                                   });
                             })),
                       ))
-                  : NoDataPage(text: 'Your cart is empty');
+                  : const NoDataPage(text: 'Your cart is empty');
             })
           ],
         ),
@@ -270,7 +270,7 @@ class CartPage extends StatelessWidget {
                 topRight: Radius.circular(Dimension.radius20 * 2),
               ),
             ),
-            child: cartController.getItems.length > 0
+            child: cartController.getItems.isNotEmpty
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/screens/cart/cart_history_page.dart';
 import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
+import 'package:food_delivery_ecommerce/screens/home/person_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +21,7 @@ class _HomePageState extends State<HomePage> {
       child: const Center(child: Text("Page1")),
     ),
     const CartHistoryPage(),
-    Container(
-      child: const Center(child: Text("Page3")),
-    ),
+    const PersonPage()
   ];
 
   onTapNav(int index) {
