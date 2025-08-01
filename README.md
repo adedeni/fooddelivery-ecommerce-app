@@ -204,7 +204,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 5. Open a Pull Request
 
 
-## 🚀 Roadmap
+## Roadmap
 
 - [ ] User authentication and registration
 - [ ] Payment integration
