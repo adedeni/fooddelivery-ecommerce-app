@@ -1,11 +1,14 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
+import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/screens/home/food_page_body.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/big_text.dart';
 import 'package:food_delivery_ecommerce/widgets/small_text.dart';
+import 'package:get/get.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -15,10 +18,15 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
+
+  Future<void> _loadResources() async {
+    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return RefreshIndicator(child:  Column(
         children: [
           //header
           Container(
@@ -58,6 +66,6 @@ class _MainFoodPageState extends State<MainFoodPage> {
        const Expanded(child:  SingleChildScrollView(child: FoodPageBody())),
         ],
       ),
-    );
+     onRefresh: _loadResources); 
   }
 }

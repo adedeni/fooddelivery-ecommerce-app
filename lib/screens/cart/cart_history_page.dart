@@ -49,6 +49,23 @@ class CartHistoryPage extends StatelessWidget {
     //print (orderTimes);
 
     var listCounter = 0;
+
+    Widget timeWidget(index) {
+      var outputDate = DateTime.now().toString();
+      if (index < getCartHistoryList.length) {
+        DateTime parseDate = DateFormat("yyyy-MM-dd HH:mm:ss")
+            .parse(getCartHistoryList[listCounter].time!);
+
+        var inputDate = DateTime.parse(parseDate.toString());
+        var outputFormat = DateFormat("dd/mm/yyyy hh:mm a");
+
+        outputDate = outputFormat.format(inputDate);
+      }
+      return BigText(
+        text: outputDate,
+      );
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -94,24 +111,7 @@ class CartHistoryPage extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        (() {
-                                          DateTime parseDate =
-                                              DateFormat("yyyy-MM-dd HH:mm:ss")
-                                                  .parse(getCartHistoryList[
-                                                          listCounter]
-                                                      .time!);
-
-                                          var inputDate = DateTime.parse(
-                                              parseDate.toString());
-                                          var outputFormat =
-                                              DateFormat("dd/mm/yyyy hh:mm a");
-
-                                          var outputDate =
-                                              outputFormat.format(inputDate);
-                                          return BigText(
-                                            text: outputDate,
-                                          );
-                                        }()),
+                                        timeWidget(listCounter),
                                         SizedBox(
                                           height: Dimension.height10,
                                         ),
@@ -119,7 +119,6 @@ class CartHistoryPage extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            
                                             Expanded(
                                               child: SingleChildScrollView(
                                                 scrollDirection:
@@ -133,7 +132,7 @@ class CartHistoryPage extends StatelessWidget {
                                                               .length) {
                                                         listCounter++;
                                                       }
-                                                      
+
                                                       return Container(
                                                         height:
                                                             Dimension.height20 *
@@ -167,7 +166,6 @@ class CartHistoryPage extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            
                                             SizedBox(
                                               height: Dimension.height20 * 4,
                                               child: Column(
