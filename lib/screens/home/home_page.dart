@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/screens/cart/cart_history_page.dart';
 import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
-import 'package:food_delivery_ecommerce/screens/home/person_page.dart';
+import 'package:food_delivery_ecommerce/screens/accounts/profile_page.dart';
+import 'package:food_delivery_ecommerce/screens/home/test_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,8 @@ class _HomePageState extends State<HomePage> {
       child: const Center(child: Text("Page1")),
     ),
     const CartHistoryPage(),
-    const PersonPage()
+    const ProfilePage(),
+    const TestPage(),
   ];
 
   onTapNav(int index) {
@@ -51,6 +53,8 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart), label: "Cart"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.roller_shades_outlined), label: "Test"),
           ]),
     );
   }

@@ -6,14 +6,14 @@ import 'package:food_delivery_ecommerce/widgets/big_text.dart';
 import 'package:food_delivery_ecommerce/widgets/small_text.dart';
 
 
-class PersonPage extends StatefulWidget {
-  const PersonPage({super.key});
+class TestPage extends StatefulWidget {
+  const TestPage({super.key});
 
   @override
-  State<PersonPage> createState() => _PersonPageState();
+  State<TestPage> createState() => _TestPageState();
 }
 
-class _PersonPageState extends State<PersonPage> {
+class _TestPageState extends State<TestPage> {
   
   final List<String> _generatedNumbers = [];
   final Random _random = Random();
