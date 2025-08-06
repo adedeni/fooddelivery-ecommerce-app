@@ -5,6 +5,7 @@ import 'package:food_delivery_ecommerce/controllers/recommended_products_control
 //import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 //import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
+import 'package:food_delivery_ecommerce/screens/auth/sign_up_page.dart';
 //import 'package:food_delivery_ecommerce/screens/splash/splash_page.dart';
 //import 'package:food_delivery_ecommerce/screens/cart/cart_page.dart';
 //import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
@@ -14,6 +15,7 @@ import 'package:food_delivery_ecommerce/routes/route_helper.dart';
 
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dependencies;
+import 'screens/auth/sign_in_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
     Get.find<CartController>().getCartData();
    return GetBuilder<PopularProductController>(builder: (_){
       return GetBuilder<RecommendedProductController>(builder: (_){
-        return  GetMaterialApp(
+        return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
 
       
@@ -39,9 +41,11 @@ class MyApp extends StatelessWidget {
       //home:  CartPage(),
       //home: const MainFoodPage(),
       //home: const SplashScreen(),
-      initialRoute: RouteHelper.getSplashScreen(),
+      //home: SignUpPage(),
+      home: SignInPage(),
+    //   initialRoute: RouteHelper.getSplashScreen(),
       
-     getPages: RouteHelper.routes,
+    //  getPages: RouteHelper.routes,
       
     );
       });

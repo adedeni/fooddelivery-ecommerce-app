@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery_ecommerce/screens/auth/sign_up_page.dart';
 import 'package:food_delivery_ecommerce/screens/cart/cart_history_page.dart';
 import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
 import 'package:food_delivery_ecommerce/screens/accounts/profile_page.dart';
@@ -18,9 +19,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     const MainFoodPage(),
-    Container(
-      child: const Center(child: Text("Page1")),
-    ),
+    const SignUpPage(),
     const CartHistoryPage(),
     const ProfilePage(),
     const TestPage(),
