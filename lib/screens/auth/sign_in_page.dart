@@ -4,8 +4,9 @@ import 'package:food_delivery_ecommerce/screens/auth/sign_up_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/big_text.dart';
-import 'package:food_delivery_ecommerce/widgets/field_input.dart';
+import 'package:food_delivery_ecommerce/widgets/field_input_widget.dart';
 import 'package:get/get.dart';
+//import 'package:get/get.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -14,8 +15,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
-    var nameController = TextEditingController();
-    var phoneController = TextEditingController();
+   
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -57,14 +57,14 @@ class SignInPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: Dimension.height20,),
-            FieldInput(
+            FieldInputWidget(
                 textEditingController: emailController,
                 hintText: 'Email',
                 icon: Icons.email),
             SizedBox(
               height: Dimension.height20,
             ),
-            FieldInput(
+            FieldInputWidget(
                 textEditingController: passwordController,
                 hintText: 'Pasword',
                 icon: Icons.password_sharp),
@@ -111,7 +111,7 @@ class SignInPage extends StatelessWidget {
                       color: Colors.grey[500], fontSize: Dimension.font20),
                   children: [
                     TextSpan(
-                      recognizer: TapGestureRecognizer()..onTap=()=>const SignUpPage(),
+                      recognizer: TapGestureRecognizer()..onTap = () => Get.to(const SignUpPage()) ,
                       text: ' Create',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

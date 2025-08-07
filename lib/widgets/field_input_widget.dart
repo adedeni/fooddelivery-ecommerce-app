@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 
-class FieldInput extends StatelessWidget {
+class FieldInputWidget extends StatelessWidget {
   final TextEditingController textEditingController;
   final String hintText;
   final IconData icon;
-  const FieldInput(
+  const FieldInputWidget(
       {super.key,
       required this.textEditingController,
       required this.hintText,
