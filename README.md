@@ -214,3 +214,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Dark mode theme
 - [ ] Restaurant ratings and reviews
 - [ ] Advanced search and filtering
+
+Personal access client created successfully.
+Client ID: 2
+Client secret: FTb4XtTj8kLMzOPlNbF8uVW9KGVXpyRwRmtva6HD
+Password grant client created successfully.
+Client ID: 3
+Client secret: FJ4Er7HdDEraxyZzhHJsoQMzjiiDGnybXf4E68Kr

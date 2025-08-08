@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/base/custom_snack_bar.dart';
+import 'package:food_delivery_ecommerce/controllers/auth_controller.dart';
 import 'package:food_delivery_ecommerce/models/sign_up_model.dart';
 import 'package:food_delivery_ecommerce/screens/auth/sign_in_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
@@ -21,6 +22,7 @@ class SignUpPage extends StatelessWidget {
     var signUpImages = ['t.png', "f.png", "g.png"];
 
     void _registration() {
+      var authController = Get.find<AuthController>();
       String name = nameController.text.trim();
       String phone = phoneController.text.trim();
       String email = emailController.text.trim();
@@ -42,13 +44,17 @@ class SignUpPage extends StatelessWidget {
             title: 'Password');
       } else {
         customSnackBar('Welcome!', title: 'Success');
+        // ignore: unused_local_variable
         SignUpModel signUpModel = SignUpModel(
-            name: name,
-            phone: phone,
-            email: email,
-            password: password
-            );
-            print(signUpModel.toString());
+            name: name, phone: phone, email: email, password: password);
+        // print(signUpModel.toString());
+        authController.registration(signUpModel).then((status) {
+          if (status.isSuccess) {
+            print('Successfully registered');
+          } else {
+            customSnackBar(status.message);
+          }
+        });
       }
     }
 

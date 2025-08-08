@@ -12,8 +12,9 @@ class AuthRepository {
    return await  apiClient.post(AppContants.REGISTRATION_URI, signUpModel.toJson());
   }
 
-  savedUserToken(String token){
+  savedUserToken(String token) async {
     apiClient.token = token;
     apiClient.updateHeader(token);
+    return await sharedPreferences.setString(AppContants.TOKEN, token);
   }
 }
