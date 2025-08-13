@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_ecommerce/controllers/auth_controller.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({super.key});
