@@ -7,7 +7,7 @@ import 'package:food_delivery_ecommerce/data/repository/auth_repository.dart';
 import 'package:food_delivery_ecommerce/data/repository/cart_repository.dart';
 import 'package:food_delivery_ecommerce/data/repository/popular_product_repository.dart';
 import 'package:food_delivery_ecommerce/data/repository/recommended_product_repository.dart';
-import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:get/get_core/src/get_main.dart';
@@ -21,7 +21,7 @@ Future<void> init() async {
   });
   //api client
   Get.lazyPut(() {
-    return ApiClient(appBaseUrl: AppContants.BASE_URL);
+    return ApiClient(appBaseUrl: AppConstants.BASE_URL);
   });
 
   //repository

@@ -1,4 +1,4 @@
-import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 import 'package:get/get.dart';
 
 class ApiClient extends GetConnect implements GetxService {
@@ -9,7 +9,7 @@ class ApiClient extends GetConnect implements GetxService {
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
     timeout = const Duration(seconds: 30);
-    token = AppContants.TOKEN;
+    token = AppConstants.TOKEN;
     _mainHeaders = {
       'Content-type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token',
@@ -35,8 +35,10 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response> postData(String uri, dynamic body) async {
+    print(body.toString());
     try {
       Response response = await post(uri, body, headers: _mainHeaders);
+      print(response.toString());
       return response;
     } catch (e) {
      // print(e.toString());

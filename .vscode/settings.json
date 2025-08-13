@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "C:/Users/adesh/Desktop/food_delivery_ecommerce/linux"
+    "cmake.sourceDirectory": "C:/Users/adesh/Desktop/food_delivery_ecommerce/linux",
+    "cSpell.words": [
+        "ecommerce",
+        "Getx"
+    ]
 }

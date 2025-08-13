@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:food_delivery_ecommerce/models/cart_model.dart';
-import 'package:food_delivery_ecommerce/utilities/app_contants.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartRepository {
@@ -17,28 +17,28 @@ class CartRepository {
 
   void addToCartList(List<CartModel> cartList) {
     //this is to remove what is in the cart list on the local storage for debugging purpose
-    sharedPreferences.remove(AppContants.CART_LIST);
+    sharedPreferences.remove(AppConstants.CART_LIST);
     
-    sharedPreferences.remove(AppContants.CART_HISTORY_LIST);
+    sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
     // return;
 
     var time = DateTime.now().toString();
     cart = [];
-    //convert object to string because sharedpreferences only accepts string
+    //convert object to string because shared preferences only accepts string
     cartList.forEach((element) {
       element.time = time;
       return cart.add(jsonEncode(element));
     });
-    sharedPreferences.setStringList(AppContants.CART_LIST, cart);
-    //print(sharedPreferences.getStringList(AppContants.CART_LIST));
+    sharedPreferences.setStringList(AppConstants.CART_LIST, cart);
+    //print(sharedPreferences.getStringList(AppConstants.CART_LIST));
     //getCartList();
   }
 
   List<CartModel> getCartList() {
     List<String> carts = [];
-    if (sharedPreferences.containsKey(AppContants.CART_LIST)) {
-      carts = sharedPreferences.getStringList(AppContants.CART_LIST)!;
-      //print("list inside cartlist " + carts.toString());
+    if (sharedPreferences.containsKey(AppConstants.CART_LIST)) {
+      carts = sharedPreferences.getStringList(AppConstants.CART_LIST)!;
+      //print("list inside cart list " + carts.toString());
     }
     List<CartModel> cartList = [];
 
@@ -49,10 +49,10 @@ class CartRepository {
   }
 
   List<CartModel> getCartHistoryList() {
-    if (sharedPreferences.containsKey(AppContants.CART_HISTORY_LIST)) {
+    if (sharedPreferences.containsKey(AppConstants.CART_HISTORY_LIST)) {
       cartHistory = [];
       cartHistory =
-          sharedPreferences.getStringList(AppContants.CART_HISTORY_LIST)!;
+          sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
 
     List<CartModel> cartListHistory = [];
@@ -63,9 +63,9 @@ class CartRepository {
   }
 
   void addToCartHistoryList() {
-    if (sharedPreferences.containsKey(AppContants.CART_HISTORY_LIST)) {
+    if (sharedPreferences.containsKey(AppConstants.CART_HISTORY_LIST)) {
       cartHistory =
-          sharedPreferences.getStringList(AppContants.CART_HISTORY_LIST)!;
+          sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     for (int i = 0; i < cart.length; i++) {
       //print("the history list is " + cart[i]);
@@ -77,7 +77,7 @@ class CartRepository {
     }
 
     removeCart();
-    sharedPreferences.setStringList(AppContants.CART_HISTORY_LIST, cartHistory);
+    sharedPreferences.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
 
     // print("the length of history list is " +
     //     getCartHistoryList().length.toString());
@@ -85,6 +85,6 @@ class CartRepository {
 
   void removeCart() {
     cart = [];
-    sharedPreferences.remove(AppContants.CART_LIST);
+    sharedPreferences.remove(AppConstants.CART_LIST);
   }
 }

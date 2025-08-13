@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-class AppContants {
+class AppConstants {
   static const String APP_NAME = "ChopUp";
   static const int APP_VERSION = 1;
 //BASE ENDPOINTS
@@ -23,5 +23,5 @@ static const String REGISTRATION_URI = "http://127.0.0.1:8000/api/v1/auth/regist
   static const String CART_LIST = "cart-list";
   static const String CART_HISTORY_LIST = "cart-history-list";
 
-  static const String TOKEN = "servertoken0158";
+  static const String TOKEN = "token";
 }
