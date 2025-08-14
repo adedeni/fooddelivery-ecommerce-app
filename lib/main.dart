@@ -44,11 +44,11 @@ class MyApp extends StatelessWidget {
       //home:  CartPage(),
       //home: const MainFoodPage(),
       //home: const SplashScreen(),
-      home: const SignUpPage(),
+      //home: const SignUpPage(),
       //home: SignInPage(),
-    //initialRoute: RouteHelper.getSplashScreen(),
+    initialRoute: RouteHelper.getSplashScreen(),
       
-    //getPages: RouteHelper.routes,
+      getPages: RouteHelper.routes,
       
     );
       });

@@ -15,13 +15,16 @@ class AppConstants {
   static const String DRINKS_URI = "/2809da4ecd48e95a5178";
   // static const String DRINKS_URI = "/api/v1/products/recommended";
 
-
 //AUTH ENDPOINTS
-static const String REGISTRATION_URI = "http://127.0.0.1:8000/api/v1/auth/register";
-
+  static const String REGISTRATION_URI =
+      "http://127.0.0.1:8000/api/v1/auth/register";
+  static const String LOGIN_URI =
+      "http://127.0.0.1:8000/api/v1/auth/login";
 
   static const String CART_LIST = "cart-list";
   static const String CART_HISTORY_LIST = "cart-history-list";
 
-  static const String TOKEN = "token";
+  static const String TOKEN = "DBtoken";
+  static const String PHONE = "";
+  static const String PASSWORD = "";
 }
