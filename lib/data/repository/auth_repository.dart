@@ -15,16 +15,18 @@ class AuthRepository {
         AppConstants.REGISTRATION_URI, signUpModel.toJson());
   }
 
-    Future<String> getUserToken() async {
-    return await sharedPreferences.getString(AppConstants.TOKEN)??'None';
+   bool userLoggedIn()  {
+    return sharedPreferences.containsKey(AppConstants.TOKEN);
+  }
+
+  Future<String> getUserToken() async {
+    return sharedPreferences.getString(AppConstants.TOKEN) ?? 'None';
   }
 
   Future<Response> login(String email, String password) async {
     return await apiClient.postData(
         AppConstants.LOGIN_URI, {'email': email, 'password': password});
   }
-
-
 
   Future<bool> savedUserToken(String token) async {
     apiClient.token = token;
@@ -39,5 +41,14 @@ class AuthRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  bool clearShareData(){
+    sharedPreferences.remove(AppConstants.TOKEN);
+    sharedPreferences.remove(AppConstants.PASSWORD);
+    sharedPreferences.remove(AppConstants.PHONE);
+   apiClient.token= '';
+   apiClient.updateHeader('');
+    return true;
   }
 }

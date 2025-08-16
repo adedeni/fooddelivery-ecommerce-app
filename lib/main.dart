@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     Get.find<CartController>().getCartData();
    return GetBuilder<PopularProductController>(builder: (_){
       return GetBuilder<RecommendedProductController>(builder: (_){
-        // ignore: prefer_const_constructors
+      
         return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
 

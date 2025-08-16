@@ -18,7 +18,7 @@ class CartRepository {
   void addToCartList(List<CartModel> cartList) {
     //this is to remove what is in the cart list on the local storage for debugging purpose
     sharedPreferences.remove(AppConstants.CART_LIST);
-    
+
     sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
     // return;
 
@@ -72,12 +72,12 @@ class CartRepository {
       cartHistory.add(cart[i]);
       for (int j = 0; j < getCartHistoryList().length; j++) {
         //print('the time of the order is ' + getCartHistoryList()[j].time.toString());
-        
       }
     }
 
     removeCart();
-    sharedPreferences.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
+    sharedPreferences.setStringList(
+        AppConstants.CART_HISTORY_LIST, cartHistory);
 
     // print("the length of history list is " +
     //     getCartHistoryList().length.toString());
@@ -85,6 +85,12 @@ class CartRepository {
 
   void removeCart() {
     cart = [];
+    sharedPreferences.remove(AppConstants.CART_LIST);
+  }
+
+  void clearCartHistory() {
+    removeCart();
+    cartHistory = [];
     sharedPreferences.remove(AppConstants.CART_LIST);
   }
 }

@@ -2,10 +2,14 @@
     "cmake.sourceDirectory": "C:/Users/adesh/Desktop/food_delivery_ecommerce/linux",
     "cSpell.words": [
         "authcontroller",
+        "carticon",
+        "cartpage",
         "Cupertino",
         "ecommerce",
         "Getx",
         "Roboto",
-        "Schyler"
+        "Schyler",
+        "signcolor",
+        "signintocontinue"
     ]
 }

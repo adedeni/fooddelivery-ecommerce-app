@@ -60,7 +60,7 @@ class CartController extends GetxController {
               product: product);
         });
       } else {
-        Get.snackbar('Items count', 'Add at least one itme',
+        Get.snackbar('Items count', 'Add at least one item',
             backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
@@ -150,6 +150,11 @@ class CartController extends GetxController {
 
   void addToCartList(){
     cartRepository.addToCartList(getItems);
+    update();
+  }
+
+  void clearCartHistory(){
+    cartRepository.clearCartHistory();
     update();
   }
 }

@@ -3,6 +3,7 @@ import 'package:food_delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 //import 'package:food_delivery_ecommerce/screens/cart/cart_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
@@ -109,7 +110,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
-                product.img!,
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URI + product.img!,
                 fit: BoxFit.cover,
                 width: double.maxFinite,
               ),

@@ -5,6 +5,7 @@ import 'package:food_delivery_ecommerce/base/no_data_page.dart';
 import 'package:food_delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:food_delivery_ecommerce/models/cart_model.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
 import 'package:food_delivery_ecommerce/widgets/app_icon.dart';
@@ -154,10 +155,9 @@ class CartHistoryPage extends StatelessWidget {
                                                               DecorationImage(
                                                             fit: BoxFit.cover,
                                                             image: NetworkImage(
-                                                                getCartHistoryList[
-                                                                        listCounter -
-                                                                            1]
-                                                                    .img!),
+                                                                //getCartHistoryList[listCounter - 1].img!, //n point hosted
+                                                              AppConstants.BASE_URL + AppConstants.UPLOAD_URI +  getCartHistoryList[listCounter - 1].img!,//hosted locally
+                                                                    ),
                                                           ),
                                                         ),
                                                       );

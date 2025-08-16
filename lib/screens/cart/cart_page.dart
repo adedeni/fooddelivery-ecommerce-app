@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ecommerce/base/no_data_page.dart';
+import 'package:food_delivery_ecommerce/controllers/auth_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/popular_products_controller.dart';
 import 'package:food_delivery_ecommerce/controllers/recommended_products_controller.dart';
 import 'package:food_delivery_ecommerce/routes/route_helper.dart';
+import 'package:food_delivery_ecommerce/utilities/app_constants.dart';
 //import 'package:food_delivery_ecommerce/screens/home/main_food_page.dart';
 import 'package:food_delivery_ecommerce/utilities/colors.dart';
 import 'package:food_delivery_ecommerce/utilities/dimension.dart';
@@ -121,11 +123,13 @@ class CartPage extends StatelessWidget {
                                                   bottom: Dimension.height10),
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                        cartController
-                                                            .getItems[index]
-                                                            .img!)),
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                    AppConstants.BASE_URL + AppConstants.UPLOAD_URI + cartController.getItems[index].img!, //locally hosted
+                                                    //cartController.getItems[index].img!,//n point hosted
+                                                    
+                                                  ),
+                                                ),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         Dimension.radius20),
@@ -303,8 +307,12 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           //popularProduct.addItem(product);
-
-                          cartController.addToHistory();
+                          if (Get.find<AuthController>().userLoggedIn()) {
+                            cartController.addToHistory();
+                          } else {
+                            Get.toNamed(RouteHelper.getSignInPage());
+                          }
+                          
                         },
                         child: Container(
                           padding: EdgeInsets.only(

@@ -48,7 +48,11 @@ class SignUpPage extends StatelessWidget {
         //customSnackBar('Welcome!', title: 'Success');
         // ignore: unused_local_variable
         SignUpModel signUpModel = SignUpModel(
-            name: name, phone: phone, email: email, password: password);
+            name: name,
+            phone: phone,
+            email: email,
+            password: password,
+            );
         // print(signUpModel.toString());
         authController.registration(signUpModel).then((status) {
           if (status.isSuccess) {

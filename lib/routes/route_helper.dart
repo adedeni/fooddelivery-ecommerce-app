@@ -1,6 +1,7 @@
 //import 'package:flutter/foundation.dart';
 // ignore_for_file: unnecessary_string_interpolations
 
+import 'package:food_delivery_ecommerce/screens/auth/sign_in_page.dart';
 import 'package:food_delivery_ecommerce/screens/cart/cart_page.dart';
 import 'package:food_delivery_ecommerce/screens/food/popular_food_detail.dart';
 import 'package:food_delivery_ecommerce/screens/food/recommended_food_detail.dart';
@@ -10,11 +11,12 @@ import 'package:food_delivery_ecommerce/screens/splash/splash_page.dart';
 import 'package:get/route_manager.dart';
 
 class RouteHelper {
-  static const String splashScreen = "/spash-screen";
+  static const String splashScreen = "/splash-screen";
   static const String initial = "/";
   static const String popularFood = "/popular-food";
   static const String recommendedFood = "/recommended-food";
   static const String cartPage = "/cart-page";
+  static const String signIn = "/sign-in";
 
   static String getSplashScreen() => '$splashScreen';
   static String getInitial() => '$initial';
@@ -23,6 +25,8 @@ class RouteHelper {
   static String getRecommendedFood(int pageId, String page) =>
       '$recommendedFood?pageId=$pageId&page=$page';
   static String getCartPage() => '$cartPage';
+   static String getSignInPage() => '$signIn';
+  
 
   static List<GetPage> routes = [
     GetPage(
@@ -34,6 +38,12 @@ class RouteHelper {
         name: initial,
         page: () {
           return const HomePage();
+        },
+        transition: Transition.fadeIn),
+         GetPage(
+        name: signIn,
+        page: () {
+          return const SignInPage();
         },
         transition: Transition.fadeIn),
     GetPage(
